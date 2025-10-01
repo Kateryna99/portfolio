@@ -1,0 +1,71 @@
+@use "variables" as *;
+
+@mixin onTabletAndUp {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onLaptopAndUp {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onDesktopAndUp {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin exceptLastChild {
+  &:not(:last-child) {
+    @content;
+  }
+}
+
+@mixin onlyLastChild {
+  &:last-child {
+    @content;
+  }
+}
+
+@mixin before {
+  &::before {
+    content: '';
+    @content;
+  }
+}
+
+@mixin after {
+  &::after {
+    content: '';
+    @content;
+  }
+}
+
+@mixin onHover {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin onActive {
+  &:active {
+    @content;
+  }
+}
+
+@mixin titleMain {
+  font-size: $text-28;
+  font-weight: $font-weight-bold;
+  color: $warm-brown;
+
+  @include onTabletAndUp {
+    font-size: $text-36;
+  }
+
+  @include onLaptopAndUp {
+    font-size: $text-40;
+  }
+}
